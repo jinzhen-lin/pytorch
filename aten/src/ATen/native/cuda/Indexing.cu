@@ -1151,7 +1151,7 @@ void index_add_cuda_impl(const Tensor& self, int64_t dim, const Tensor& index, c
   if (globalContext().deterministicAlgorithms()){
     torch::List<std::optional<Tensor>> indices;
     indices.reserve(dim + 1);
-    for (const auto i: c10::irange(dim)) {
+    for ([[maybe_unused]] const auto i : c10::irange(dim)) {
       indices.emplace_back();
     }
     indices.emplace_back(index.to(at::kLong));
